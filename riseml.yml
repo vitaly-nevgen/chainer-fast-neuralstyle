@@ -1,0 +1,17 @@
+deploy:
+  image:
+    name: nvidia/cuda:8.0-cudnn5-devel
+    install:
+    - apt-get update && apt-get install -y python-pip wget
+    - pip install riseml numpy scipy chainer Pillow
+    - wget https://github.com/gafr/chainer-fast-neuralstyle-models/raw/master/models/kanagawa.model
+  gpu: yes
+  run:
+    - python demo.py --model kanagawa.model --gpu 0
+  input:
+    image: image/jpeg
+  output:
+    image: image/jpeg
+  demo:
+    title: Real-Time Style Transfer
+description: Demo for chainer implementation of "Perceptual Losses for Real-Time Style Transfer and Super-Resolution".
