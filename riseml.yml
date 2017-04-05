@@ -2,7 +2,7 @@ deploy:
   image:
     name: nvidia/cuda:8.0-cudnn5-devel
     install:
-    - apt-get update && apt-get install -y python-pip wget
+    - apt-get update && apt-get install -y python-pip wget libtiff5-dev zlib1g-dev
     - pip install riseml numpy scipy chainer Pillow
     - wget https://github.com/gafr/chainer-fast-neuralstyle-models/raw/master/models/kanagawa.model
   gpu: yes
